@@ -17,13 +17,13 @@ router.route('/signup').post((req, res) => {
   const password = req.body.password;
 
   if (!username || !password) {
-    return res.status(422).json({error: "Please enter all the fields"})
+    return res.json({error: "Please enter all the fields"})
   }
 
   User.findOne({username: username})
   .then((existUser) =>{
     if (existUser) {
-      return res.status(422).json({error: "Username already taken"})
+      return res.json({error: "Username already taken"})
     }
     const newUser = new User({username, password});
 
@@ -44,14 +44,14 @@ router.route('/signin').post((req, res) => {
   User.findOne({username: username})
   .then((existUser) =>{
     if (!existUser) {
-      return res.status(422).json({error: "Username does not exist"})
+      return res.json({error: "Username does not exist"})
     }
     if (existUser.password == password) {
       const token = jwt.sign({_id:existUser._id}, JWT_SECRET)
       const {_id, username} = existUser
       res.json({token, user: {_id, username},message: "Successfully signed in!"})
     } else {
-      return res.status(422).json({error: "Username and password do not match"})
+      return res.json({error: "Username and password do not match"})
     }
     
   })
