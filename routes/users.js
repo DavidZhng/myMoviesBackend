@@ -37,9 +37,8 @@ router.route('/signup').post((req, res) => {
 router.route('/signin').post((req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-
   if (!username || !password) {
-    return res.status(422).json({error: "Please enter all the fields"})
+    return res.json({error: "Please enter all the fields"})
   }
 
   User.findOne({username: username})
