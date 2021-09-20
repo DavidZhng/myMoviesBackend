@@ -62,7 +62,7 @@ router.route('/addMovie').post((req, res) => {
 
   User.findById(req.body.id)
       .then(user => {
-        user.moviess.push({
+        user.movies.push({
           title = req.body.title,
           poster_path = req.body.poster_path,
           vote_average = req.body.vote_average,
