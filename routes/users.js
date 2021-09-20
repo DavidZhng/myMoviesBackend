@@ -68,7 +68,7 @@ router.route('/addMovie').post((req, res) => {
           id: req.body.movie_id
         })
         user.save()
-        .then(() => res.json('Movie Added!'))
+        .then(() => res.json(user.movies))
         .catch(err => res.status(400).json('Error: ' + err));
     })
     .catch(err => res.status(400).json('Error: ' + err));
