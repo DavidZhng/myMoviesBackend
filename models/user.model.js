@@ -12,6 +12,9 @@ const movieSchema = new Schema({
   vote_average: {
     type: Number,
   },
+  movie_id: {
+    type: Number,
+  },
 });
 
 const userSchema = new Schema({
