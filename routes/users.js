@@ -74,7 +74,7 @@ router.route('/addMovie').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
-router.post('/getMovies', requireSignin, (req, res) => {
+router.post('/getMovies', (req, res) => {
   User.findById(req.body.id)
   .then(user => res.json(user.movies))
   .catch(err => res.status(400).json('Error: ' + err));
