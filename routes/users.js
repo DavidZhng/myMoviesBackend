@@ -58,21 +58,6 @@ router.route('/signin').post((req, res) => {
   .catch(err => console.log(err));
 });
 
-router.route('/addMovie').post((req, res) => {
-
-  User.findById(req.body.id)
-      .then(user => {
-        user.movies.push({
-          title: req.body.title,
-          poster_path: req.body.poster_path,
-          vote_average: req.body.vote_average,
-        })
-        user.save()
-        .then(() => res.json('Movie Added!'))
-        .catch(err => res.status(400).json('Error: ' + err));
-    })
-    .catch(err => res.status(400).json('Error: ' + err));
-});
 
 
 module.exports = router;
