@@ -3,16 +3,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const movieSchema = new Schema({
-  title: {
+  movie_title: {
     type: String,
   },
-  poster_path: {
+  movie_poster_path: {
     type: String,
   },
-  vote_average: {
+  movie_vote_average: {
     type: Number,
   },
-  id: {
+  movie_id: {
     type: Number,
   },
 });
