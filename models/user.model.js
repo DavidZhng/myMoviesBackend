@@ -2,6 +2,18 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const movieSchema = new Schema({
+  title: {
+    type: String,
+  },
+  poster_path: {
+    type: String,
+  },
+  vote_average: {
+    type: Number,
+  },
+});
+
 const userSchema = new Schema({
   username: {
     type: String,
@@ -10,7 +22,8 @@ const userSchema = new Schema({
   password: {
     type: String,
     required: true,
-  }
+  },
+  movies: [movieSchema],
 });
 
 const User = mongoose.model('User', userSchema);
