@@ -65,7 +65,7 @@ router.route('/addMovie').post((req, res) => {
           title: req.body.title,
           poster_path: req.body.poster_path,
           vote_average: req.body.vote_average,
-          movie_id: req.body.movie_id
+          id: req.body.movie_id
         })
         user.save()
         .then(() => res.json('Movie Added!'))
