@@ -74,6 +74,21 @@ router.route('/addMovie').post((req, res) => {
     .catch(err => res.status(400).json('Error: ' + err));
 });
 
+router.route('/removeMovie').post((req, res) => {
+  User.findById(req.body.id)
+      .then(user => {
+
+      const index = user.movies.findIndex(movie => movie.id === req.body.movie_id);
+
+      if (index !== undefined) user.movies.splice(index, 1);
+
+      user.save()
+          .then(() => res.json(user.movies))
+          .catch(err => res.status(400).json('Error: ' + err));
+      })
+      .catch(err => res.status(400).json('Error: ' + err));
+  });
+
 router.post('/getMovies', (req, res) => {
   User.findById(req.body.id)
   .then(user => res.json(user.movies))
